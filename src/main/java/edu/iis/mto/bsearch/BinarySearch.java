@@ -22,7 +22,7 @@ public class BinarySearch {
      * @return obiekt rezultatu o polach: - found (true jezeli znaleziony) - position (jezeli znaleziony - pozycja w
      *         sekwencji, jezeli nie znaleziony -1)
      */
-    public static SearchResult search(Integer key, int[] seq) {
+    public static SearchResult search(int key, int[] seq) {
         int start = 0;
         int end = seq.length - 1;
         int center;
@@ -30,29 +30,21 @@ public class BinarySearch {
         SearchResult result = new SearchResult();
         if (seq.length == 0)
             throw new IllegalArgumentException("Empty data");
-        if (key == null) {
-            res = Arrays.stream(seq).sorted().distinct().toArray();
-            result.setSortedlist(res);
-        }
-        if (key != null) {
-//            Arrays.stream(res).forEach(x -> {
-//                System.out.println(x);
-//            });
+        while (start <= end) {
+            center = start + (end - start) / 2;
 
-            while (start <= end) {
-                center = (start + end) / 2;
-                if (seq[center] == key) {
-                    result.setPosition(center + 1);
-                    break;
-                } else {
-                    if (seq[center] < key)
-                        start = center + 1;
-                    else
-                        end = center - 1;
-                }
+            if (key < seq[center])
+                end = center - 1;
+            else if (key > seq[center])
+                start = center + 1;
+            else {
+                result.setPosition(center);
+                break;
 
             }
+
         }
+
         return result;
     }
 

@@ -21,13 +21,12 @@ public class TestBinarySearch {
         int[] data = new int[] {};
         searchObj.search(keyTemplate, data);
     }
-    
+
     @Test
-    public void testSearchResultAscending() {
+    public void testSearchResultKeyFound() {
         BinarySearch searchObj = new BinarySearch();
-        int keyTemplate = 1;
-        int[] data = new int[] {2,5,4,1};
-        int[] dataTemplate = new int[] {1,2,4,5};
-        Assert.assertArrayEquals(dataTemplate, searchObj.search(null, data).getSortedlist());
+        int[] data = new int[] {1,2,6,9};
+        for(int i = 0; i<data.length ;i++)
+            Assert.assertEquals(i, searchObj.search(data[i], data).getPosition());
     }
 }
