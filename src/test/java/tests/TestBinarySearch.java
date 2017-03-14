@@ -25,8 +25,20 @@ public class TestBinarySearch {
     @Test
     public void testSearchResultKeyFound() {
         BinarySearch searchObj = new BinarySearch();
-        int[] data = new int[] {1,2,6,9};
-        for(int i = 0; i<data.length ;i++)
+        int[] data = new int[] {1, 2, 6, 9};
+        for (int i = 0; i < data.length; i++) {
             Assert.assertEquals(i, searchObj.search(data[i], data).getPosition());
+            Assert.assertTrue(searchObj.search(data[i], data).isFound());
+        }
+    }
+
+    @Test
+    public void testSearchResultKeyNotFound() {
+        BinarySearch searchObj = new BinarySearch();
+        int[] data = new int[] {1, 2, 6, 9};
+        int templateKey = 5;
+        Assert.assertEquals(-1, searchObj.search(templateKey, data).getPosition());
+        Assert.assertFalse(searchObj.search(templateKey, data).isFound());
+
     }
 }
