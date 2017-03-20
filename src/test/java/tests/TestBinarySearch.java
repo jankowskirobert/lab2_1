@@ -25,7 +25,7 @@ public class TestBinarySearch {
     @Test
     public void testSearchResultKeyFound() {
         BinarySearch searchObj = new BinarySearch();
-        int[] data = new int[] {1, 2, 6, 9};
+        final int[] data = new int[] {1, 2, 6, 9};
         for (int i = 0; i < data.length; i++) {
             Assert.assertEquals(i, searchObj.search(data[i], data).getPosition());
             Assert.assertTrue(searchObj.search(data[i], data).isFound());
@@ -35,10 +35,60 @@ public class TestBinarySearch {
     @Test
     public void testSearchResultKeyNotFound() {
         BinarySearch searchObj = new BinarySearch();
-        int[] data = new int[] {1, 2, 6, 9};
-        int templateKey = 5;
-        Assert.assertEquals(-1, searchObj.search(templateKey, data).getPosition());
+        final int[] data = new int[] {1, 2, 6, 9};
+        final int templateKey = 5;
+        final int valueNotFound = -1;
+        Assert.assertEquals(valueNotFound, searchObj.search(templateKey, data).getPosition());
         Assert.assertFalse(searchObj.search(templateKey, data).isFound());
+    }
 
+    @Test
+    public void testSearchResultMiddleElement() {
+        BinarySearch searchObj = new BinarySearch();
+        final int[] data = new int[] {1, 3, 5, 7, 9};
+        final int position = data.length / 2 + 1;
+        final int templateKey = data[position];
+        Assert.assertEquals(position, searchObj.search(templateKey, data).getPosition());
+        Assert.assertTrue(searchObj.search(templateKey, data).isFound());
+    }
+
+    @Test
+    public void testSearchResultInSequence() {
+        BinarySearch searchObj = new BinarySearch();
+        final int[] data = new int[] {1};
+        final int position = 0;
+        final int templateKey = 1;
+        Assert.assertEquals(position, searchObj.search(templateKey, data).getPosition());
+        Assert.assertTrue(searchObj.search(templateKey, data).isFound());
+    }
+
+    @Test
+    public void testSearchResultInSequenceNotFound() {
+        BinarySearch searchObj = new BinarySearch();
+        final int[] data = new int[] {1};
+        final int position = -1;
+        final int templateKey = Integer.MAX_VALUE;
+        Assert.assertEquals(position, searchObj.search(templateKey, data).getPosition());
+        Assert.assertFalse(searchObj.search(templateKey, data).isFound());
+    }
+
+    @Test
+    public void testSearchResultIsFirst() {
+        BinarySearch searchObj = new BinarySearch();
+        final int[] data = new int[] {1, 3, 7};
+        final int position = 0;
+        final int templateKey = data[position];
+        Assert.assertEquals(position, searchObj.search(templateKey, data).getPosition());
+        Assert.assertTrue(searchObj.search(templateKey, data).isFound());
+    }
+
+    @Test
+    public void testSearchResultIsLast() {
+        BinarySearch searchObj = new BinarySearch();
+        final int[] data = new int[] {1, 3, 7};
+        final int position = data.length - 1;
+        final int templateKey = data[position];
+        Assert.assertEquals(position, searchObj.search(templateKey, data).getPosition());
+        Assert.assertTrue(searchObj.search(templateKey, data).isFound());
     }
 }

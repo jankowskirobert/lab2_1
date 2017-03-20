@@ -3,22 +3,10 @@
  */
 package edu.iis.mto.bsearch;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class SearchResult {
 
 	private static final int NOT_FOUND = -1;
 	private int position = NOT_FOUND;
-        private int[] sortedlist;
-
-    public int[] getSortedlist() {
-        return sortedlist;
-    }
-
-    public void setSortedlist(int[] sortedlist) {
-        this.sortedlist = sortedlist;
-    }
 
 	public boolean isFound() {
 		return position > NOT_FOUND;
