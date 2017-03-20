@@ -42,14 +42,21 @@ public class TestBinarySearch {
     }
 
     @Test
-    public void testSearchResultMiddleElement() {        
+    public void testSearchResultMiddleOddElement() {        
         final int[] data = new int[] {1, 3, 5, 7, 9};
         final int position = (data.length-1) / 2 ;
         final int templateKey = data[position];
         assertThat(BinarySearch.search(templateKey, data).getPosition(), is(position));
         assertThat(BinarySearch.search(templateKey, data).isFound(), is(true));
     }
-
+    @Test
+    public void testSearchResultMiddleEvenElement() {        
+        final int[] data = new int[] {1, 3, 5, 7};
+        final int position = (data.length-1) / 2 ;
+        final int templateKey = data[position];
+        assertThat(BinarySearch.search(templateKey, data).getPosition(), is(position));
+        assertThat(BinarySearch.search(templateKey, data).isFound(), is(true));
+    }
     @Test
     public void testSearchResultInSequence() {
         final int[] data = new int[] {1};
