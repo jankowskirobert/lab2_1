@@ -32,7 +32,6 @@ public class BinarySearch {
             throw new IllegalArgumentException("Empty data");
         while (start <= end) {
             center = start + (end - start) / 2;
-
             if (key < seq[center])
                 end = center - 1;
             else if (key > seq[center])
@@ -40,11 +39,8 @@ public class BinarySearch {
             else {
                 result.setPosition(center);
                 break;
-
             }
-
         }
-
         return result;
     }
 
